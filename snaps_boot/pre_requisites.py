@@ -5,16 +5,15 @@ Created on April 21, 2018
 """
 import sys, os, commands
 
-failed_cmds = ['Failed to install: ']
+failed_cmds = []
 
 def system(cmd):
     failure, output = commands.getstatusoutput(cmd)
-    print cmd
     if failure:
         print 'Command %s failed to install\n' % cmd
         failed_cmds.append(cmd)
+        #sys.exit(1)
         print output
-        sys.exit(1)
     else:
         print 'Command %s successfully executed' %cmd
 
@@ -47,7 +46,7 @@ system('sudo apt-get install -y openjdk-8-jdk')
 #   pip install cryptography
 system('sudo pip install cryptography')
 
-if len(failed_cmds) > 1
-    print 'Failed to execute the following commands'
+if len(failed_cmds) > 1:
+    print 'Failed to execute the following commands: '
     for line in failed_cmds:
         print line
