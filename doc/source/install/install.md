@@ -467,7 +467,9 @@ Your OS provisioning will start and will get completed in about 20
 minutes.  The time will vary depending on your network speed and
 ip aserver boot times.
 
-#### Step 7
+This will also set the static ip for the target hosts.
+
+#### Step 7 (optional)
 Go to root directory of the project (e.g. `snaps-boot`)
 
 Execute this step only if static IPs to be assigned to host machines.
