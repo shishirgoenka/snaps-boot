@@ -469,7 +469,15 @@ ip aserver boot times.
 
 This will also set the static ip for the target hosts.
 
+>:warning: This step will reboot each target server when it is done.  
+Wait a few minutes then ping and/or ssh each management server to verify  
+it is back up. 
+
 #### Step 7 (optional)
+
+The -s option can be maintained as a troubleshooting tool for static ip 
+configuration 
+
 Go to root directory of the project (e.g. `snaps-boot`)
 
 Execute this step only if static IPs to be assigned to host machines.
@@ -481,6 +489,9 @@ sudo -i python $PWD/iaas_launch.py -f $PWD/conf/pxe_cluster/hosts.yaml -s
 >:warning: This step will reboot each target server when it is done.  
 Wait a few minutes then ping and/or ssh each management server to verify  
 it is back up. 
+
+> Note: This is an optional step and the same functionality is also present in
+-b option (static ip of target host are set after pxe boot )
 
 #### Step 8
 Go to root directory of the project (e.g. `snaps-boot`)
@@ -514,7 +525,9 @@ Back to Management Interface
 sudo -i python $PWD/iaas_launch.py -f $PWD/conf/pxe_cluster/hosts.yaml -sc
 ```
 
-This will modify etc/network/interfaces file to remove static entries of the interfaces and will change back default route to management interface.
+This will remove the static config files present in  etc/network/interfaces.d/ folder.
+this will remove static entries of the interfaces and will change back default route to 
+management interface after reboot.
 
 ### 5.3 Roll-back of SNAPS-Boot Installation
 
