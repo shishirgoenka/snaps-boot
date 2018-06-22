@@ -470,7 +470,7 @@ ip aserver boot times.
 This will also set the static ip for the target hosts.
 
 >:warning: This step will reboot each target server when it is done.  
-Wait a few minutes then ping and/or ssh each management server to verify  
+Wait a few minutes then ping and/or ssh each target server to verify  
 it is back up. 
 
 #### Step 7 (optional)
@@ -487,7 +487,7 @@ Run `iaas_launch.py` as shown below:
 sudo -i python $PWD/iaas_launch.py -f $PWD/conf/pxe_cluster/hosts.yaml -s
 ```
 >:warning: This step will reboot each target server when it is done.  
-Wait a few minutes then ping and/or ssh each management server to verify  
+Wait a few minutes then ping and/or ssh each target server to verify  
 it is back up. 
 
 > Note: This is an optional step and the same functionality is also present in
