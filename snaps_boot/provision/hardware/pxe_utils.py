@@ -739,6 +739,32 @@ def __static_ip_configure(static_dict, proxy_dict):
     https_proxy = proxy_dict.get('https_proxy')
     iplist = []
 
+    next_word = None
+    with open("conf/pxe_cluster/ks.cfg") as openfile:
+        for line in openfile:
+            list_word = line.split()
+            for part in line.split():
+                if "rootpw" in part:
+                    next_word = list_word[list_word.index("rootpw") + 1]
+
+    user_name = 'root'
+    password = next_word
+    check_dir = os.path.isdir(consts.SSH_PATH)
+    if not check_dir:
+        os.makedirs(consts.SSH_PATH)
+    for i in range(len(host)):
+        target = host[i].get('access_ip')
+        iplist.append(target)
+    for i in range(len(host)):
+        target = host[i].get('access_ip')
+        command= 'ansible-playbook %s --extra-vars "target=%s"' % (playbook_path_waitServer, target)
+        subprocess.call(command, shell=True)
+        __create_and_save_keys()
+
+        command = 'sshpass -p \'%s\' ssh-copy-id -o ' \
+                  'StrictHostKeyChecking=no %s@%s' \
+                  % (password, user_name, target)
+                     
     for this_host in host:
         target = this_host.get('access_ip')
         iplist.append(target)
