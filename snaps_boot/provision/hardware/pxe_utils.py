@@ -1,4 +1,5 @@
-# Copyright 2017 ARICENT HOLDINGS LUXEMBOURG SARL and Cable Television
+
+import subprocess# Copyright 2017 ARICENT HOLDINGS LUXEMBOURG SARL and Cable Television
 # Laboratories, Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +24,7 @@ import re
 
 import os
 import pkg_resources
+import subprocess
 
 from snaps_boot.ansible_p.ansible_utils import ansible_playbook_launcher as apl
 
